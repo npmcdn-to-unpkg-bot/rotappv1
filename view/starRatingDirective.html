@@ -1,0 +1,12 @@
+<style type="text/css">
+  .rating{float: left; list-style: none; font-size:1.3em; margin: 3px auto; padding:0px;}
+  .rating li{float: left; margin: 3px; cursor: pointer}
+  .rating li:hover{color:#F7AB03;}
+  .rating .filled {color: #F7AB03;}
+</style>
+
+<ul class="rating">
+	<li ng-repeat="star in stars" ng-class="star" ng-click="toggle($index)">
+		<span class="glyphicon glyphicon-star"></span>
+	</li>
+</ul>

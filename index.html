@@ -1,0 +1,97 @@
+ <!DOCTYPE html>
+ <html ng-app="RotApp">
+ <head>
+ <meta charset="UTF-8">
+
+ <!-- Bootstrap -->
+ 
+ <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
+ 
+<!-- jQuery -->
+<script   src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
+ <!-- Angular lib -->
+ <script type="text/javascript" src="lib/angular/angular.js"></script>
+ <script type="text/javascript" src="lib/angular/angular-route.js"></script>
+
+<!-- File upload API -->
+<script type="text/javascript" src="bower_components/ng-file-upload/dist/ng-file-upload-shim.js"></script>
+<script type="text/javascript" src="bower_components/ng-file-upload/dist/ng-file-upload.js"></script>
+
+ <!-- MyApp -->
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/config/routeConfig.js"></script>
+<!-- MyApp Services -->
+<script type="text/javascript" src="js/services/destinosAPIService.js"></script>
+<script type="text/javascript" src="js/services/destinoDetailAPIService.js"></script>
+<script type="text/javascript" src="js/services/categoriasAPIService.js"></script>
+
+<script type="text/javascript" src="js/directives/starRatingDirective.js"></script>
+<script type="text/javascript" src="js/controllers/homeCtrl.js"></script>
+<script type="text/javascript" src="js/controllers/addDestinoCtrl.js"></script>
+<script type="text/javascript" src="js/controllers/destinoCtrl.js"></script>
+<script type="text/javascript" src="js/controllers/starRatingCtrl.js"></script>
+<title>RotApp</title>
+</head>
+ 
+ <body ng-controller="homeCtrl">
+ <style type="text/css">
+ 		body{background: #f3f3f3;}
+
+ </style>
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="#">{{appName}}</a>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+	        <li class="active"><a href="#home"> Home <span class="sr-only">(current)</span></a></li>
+	        <li><a href="#novo">Adicionar destino</a></li>
+	      </ul>
+
+	      <ul class="nav navbar-nav navbar-right">
+	        <li><a href="#">Link</a></li>
+	        
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+	<style type="text/css">
+		.sidemenu{
+			background:white; 
+			border-right:1px solid #f3f3f3;
+			border-radius:10px 4px 4px 10px;
+		}
+
+	</style>
+  <div class="container">
+	<div class="col-md-4 sidemenu" style="">
+		<h3 class="page-header">Navegue</h3>
+		<ul class="nav nav-pills nav-stacked" style="padding-bottom:20px;">
+		  <li role="presentation" class="active"><a href="#">Home</a></li>
+		  <li role="presentation" class=""><a href="#">Categoria 1</a></li>
+		  <li role="presentation" class=""><a href="#">Categoria 2</a></li>
+		  <li role="presentation" class=""><a href="#">Categoria 3</a></li>
+
+		</ul>		
+	</div>  			
+	<div ng-view class="col-md-8 pull-right" style="background:white;"> </div>
+
+  </div>
+ 
+ 
+ </body>
+ 
+ </html>
+ 
+ 
