@@ -5,7 +5,6 @@ app.controller('addDestinoCtrl', function ($scope, Upload, $timeout, categoriasA
 		console.log($scope.categorias);
 	});
 
-
 	$scope.evtProgress = 0;
     
     $scope.submit = function() {
@@ -36,4 +35,5 @@ app.controller('addDestinoCtrl', function ($scope, Upload, $timeout, categoriasA
             console.log('progress: ' + $scope.evtProgress + '% ' + evt.config.data.file.name);
         });
     };
+
 });

@@ -12,8 +12,8 @@
 		border: 1px solid red;
 	}
 </style>
-{{roteiro}}
-<h3 class="page-header">Adicionar novo destino</h3>
+
+<h3 class="page-header">Adicionar novo destino </h3>
 <div class="col-md-6">
 	<div class="form-group">
 		<input ng-model="roteiro.nome" class="form-control" placeholder="Nome">
@@ -55,7 +55,7 @@
       </div>
       
       <span class="progress" ng-show="evtProgress >= 0">
-        <div class="progress-bar progress-bar-striped active" style="width:{{ evtProgress }}%;" ng-bind="evtProgress + '%'"></div>
+        <div class="progress-bar progress-bar-striped active" style="width:{{evtProgress}}%;" ng-bind="evtProgress + '%'"></div>
       </span>
 
       <span ng-show="picFile.result">Upload Successful</span>

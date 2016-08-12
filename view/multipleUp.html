@@ -11,39 +11,49 @@
 	.file-input{
 		border: 1px solid red;
 	}
+
+	.progress-done{
+		background: url('https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678134-sign-check-128.png') center white no-repeat;
+		opacity: 20%;
+		position: absolute;
+		top: center;
+		left: 0;
+		width: 100%;
+		height: 300px;
+		display: none;
+		 
+	}
+
 </style>
 
-<h3 class="page-header">Adicionar novo destino</h3>
-<div class="col-md-6">
-	<div class="form-group">
-		<input ng-model="roteiro.nome" class="form-control" placeholder="Nome">
-	</div>
-</div>
-<div class="col-md-6" style="position:relative">
- <form name="myForm">
+<h3 class="page-header">Adicionar novo destino <button ng-click="addItem()" class="btn btn-success"> <span class="glyphicon glyphicon-plus"></span> Add </button></h3>
+
+<div class="col-md-6" ng-repeat="i in itens" style="position:relative">
+ <form name="myForm{{$index}}">
     <fieldset>
-      <!-- <label>Título</label> -->
-      <!-- <input class="form-control" type="text" name="userName" ng-model="username" size="31" required> -->
-      
-      <label id="imgFileBrowser" class="btn btn-default btn-block btn-lg btn-file">
+      <div class="form-group">
+      	<input class="form-control" type="" disabled="disabled" value="Novo destino {{$index}}">
+      </div>
+      <label id="imgFileBrowser{{$index}}" class="btn btn-default btn-block btn-lg btn-file">
       	<span class="glyphicon glyphicon-picture"></span> Selecionar imagem
       	<input style="display:none;" class="file-input" type="file" ngf-select ng-model="picFile" name="file" accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile">
       </label>
-      <input ng-model="roteiro.imgurl" type="hidden" value="{{picFile.name}}">
-      <i ng-show="myForm.file.$error.maxSize">File too large {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+      
+      <i ng-show="myForm{{$index}}.file.$error.maxSize">File too large {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
 
 	  <div class="form-group" style="margin-top:20px;">
-      	<img class="img img-thumbnail" ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> 
+	  	<div id="progressDone{{$index}}" class="progress-done"></div>
+      	<img class="img img-thumbnail" ng-show="myForm{{$index}}.file.$valid" ngf-thumbnail="picFile" class="thumb"> 
       	<!-- <button class="btn btn-block btn-warning" ng-click="picFile = null" ng-show="picFile">Remover imagem</button> -->
       </div>
 
       <div class="form-group">
-	      <button id="imgFileSubmitBtn" ng-disabled="picFile == null" class="btn btn-primary btn-block" ng-click="upload(picFile)">Usar essa imagem</button>
+	      <button id="imgFileSubmitBtn{{$index}}" ng-disabled="picFile == null" class="btn btn-primary btn-block" ng-click="upload($index, picFile)">Usar essa imagem</button>
 	      <!-- attr Button: ng-disabled="!myForm.$valid" -->
       </div>
       
       <span class="progress" ng-show="evtProgress >= 0">
-        <div class="progress-bar progress-bar-striped active" style="width:{{ evtProgress }}%;" ng-bind="evtProgress + '%'"></div>
+        <div class="progress-bar progress-bar-striped active" style="width:{{evtProgress}}%;" ng-bind="evtProgress + '%'"></div>
       </span>
 
       <span ng-show="picFile.result">Upload Successful</span>
@@ -51,51 +61,6 @@
 
     </fieldset>
   </form>
-<!-- <img style="width:100%" src="https://media-cdn.tripadvisor.com/media/photo-s/03/9b/2d/f2/new-york-city.jpg" alt="..." class="img-thumbnail"> -->
-</div>
-
-<!-- Upload 2 :: Testar com alterando o controller uploadsCtrl.js -->
-
-<div style="width:100%; float:left; height:10px; background:#ccc; margin:10px auto;"></div>
-
-<div class="col-md-6">
-	<div class="form-group">
-		<input ng-model="roteiro.nome" class="form-control" placeholder="Nome">
-	</div>
-</div>
-<div class="col-md-6" style="position:relative">
- <form name="myForm">
-    <fieldset>
-      <!-- <label>Título</label> -->
-      <!-- <input class="form-control" type="text" name="userName" ng-model="username" size="31" required> -->
-      
-      <label id="imgFileBrowser" class="btn btn-default btn-block btn-lg btn-file">
-      	<span class="glyphicon glyphicon-picture"></span> Selecionar imagem
-      	<input style="display:none;" class="file-input" type="file" ngf-select ng-model="picFile" name="file" accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile">
-      </label>
-      <input ng-model="roteiro.imgurl" type="hidden" value="{{picFile.name}}">
-      <i ng-show="myForm.file.$error.maxSize">File too large {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
-
-	  <div class="form-group" style="margin-top:20px;">
-      	<img class="img img-thumbnail" ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> 
-      	<!-- <button class="btn btn-block btn-warning" ng-click="picFile = null" ng-show="picFile">Remover imagem</button> -->
-      </div>
-
-      <div class="form-group">
-	      <button id="imgFileSubmitBtn" ng-disabled="picFile == null" class="btn btn-primary btn-block" ng-click="upload(picFile)">Usar essa imagem</button>
-	      <!-- attr Button: ng-disabled="!myForm.$valid" -->
-      </div>
-      
-      <span class="progress" ng-show="evtProgress >= 0">
-        <div class="progress-bar progress-bar-striped active" style="width:{{ evtProgress }}%;" ng-bind="evtProgress + '%'"></div>
-      </span>
-
-      <span ng-show="picFile.result">Upload Successful</span>
-      <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-
-    </fieldset>
-  </form>
-<!-- <img style="width:100%" src="https://media-cdn.tripadvisor.com/media/photo-s/03/9b/2d/f2/new-york-city.jpg" alt="..." class="img-thumbnail"> -->
 </div>
 
 <!-- Termina -->
