@@ -32,8 +32,11 @@
  <form name="myForm{{$index}}">
     <fieldset>
       <div class="form-group">
-      	<input class="form-control" type="" disabled="disabled" value="Novo destino {{$index}}">
+	      <label></label>
+	      <input ng-model="passo.nome" class="form-control" type="text">
+	      
       </div>
+
       <label id="imgFileBrowser{{$index}}" class="btn btn-default btn-block btn-lg btn-file">
       	<span class="glyphicon glyphicon-picture"></span> Selecionar imagem
       	<input style="display:none;" class="file-input" type="file" ngf-select ng-model="picFile" name="file" accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile">

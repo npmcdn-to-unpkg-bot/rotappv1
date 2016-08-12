@@ -18,8 +18,8 @@ app.controller('uploadsCtrl', function($scope, Upload, $timeout, $parse){
 	// passar parametros para o método upload
 
 	$scope.itens = [];
-
-
+	$scope.passos = [];
+	$scope.picFile = '';
 	$scope.addItem = function(){
 		var n = $scope.itens.length + 1;
 		$scope.itens.push(n);
@@ -46,6 +46,16 @@ app.controller('uploadsCtrl', function($scope, Upload, $timeout, $parse){
 	            method: 'POST'
 
 	        }).then(function (resp) {
+	        	// Criar adicionar objeto
+	        	$scope.passos.push(
+	        	{
+	        		nome: 'Nome',
+	        		imgurl: $scope.picFile.name
+	        		
+	        	});
+
+	        	console.log($scope.passos);
+
 	            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
 	        }, function (resp) {
 	            console.log('Error status: ' + resp.status);
