@@ -17,6 +17,20 @@ app.controller('uploadsCtrl', function($scope, Upload, $timeout, $parse){
 
 	// passar parametros para o método upload
 
+	$scope.makeid = function()
+	{
+	    var text = "";
+	    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+	    for( var i=0; i < 18; i++ ){
+	        text += possible.charAt(Math.floor(Math.random() * possible.length));
+	    }
+
+	    console.log($scope.rotStringId = text);
+
+	    //return text;
+	}
+	$scope.makeid();
 	$scope.itens = [];
 	$scope.passos = [];
 	$scope.picFile = '';
@@ -36,22 +50,27 @@ app.controller('uploadsCtrl', function($scope, Upload, $timeout, $parse){
 			// console.log('>');
 			// console.log($scope['evtProgress'+index]);
 			
-	        Upload.upload({
-	            url: 'backend/uploadImg.php',
+			$scope.upData = {
+				url: 'backend/uploadImg.php',
 	            data: {
 	                file: file, 
 	                'username': $scope.username,
-	                'targetPath':'../upload/'
+	                'targetPath':'../upload/',
+	                'name': file.name
+
 	            },
 	            method: 'POST'
+			}
 
-	        }).then(function (resp) {
+	        Upload.upload($scope.upData).then(function (resp) {
 	        	// Criar adicionar objeto
+
 	        	$scope.passos.push(
 	        	{
-	        		nome: 'Nome',
-	        		imgurl: $scope.picFile.name
-	        		
+	        		nome: $scope.rotStringId + '_' + $scope.upData.data.name,
+	        		imgurl: $scope.upData.data.targetPath + $scope.rotStringId + '_' + $scope.upData.data.name
+
+       		
 	        	});
 
 	        	console.log($scope.passos);
