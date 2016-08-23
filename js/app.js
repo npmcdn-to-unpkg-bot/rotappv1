@@ -1,4 +1,4 @@
-var app = angular.module('RotApp', ['ngRoute', 'ngFileUpload']);
+var app = angular.module('RotApp', ['ui.router', 'ngFileUpload', 'infinite-scroll']);
 
 
 

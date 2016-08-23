@@ -8,12 +8,16 @@
  <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
  
 <!-- jQuery -->
-<script   src="https://code.jquery.com/jquery-3.1.0.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 
  <!-- Angular lib -->
  <script type="text/javascript" src="lib/angular/angular.js"></script>
- <script type="text/javascript" src="lib/angular/angular-route.js"></script>
+ 
+<!-- Angular infinite Scroll -->
+<script type="text/javascript" src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.min.js"></script>
 
+<!-- Angular ui-router -->
+<script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <!-- File upload API -->
 <script type="text/javascript" src="bower_components/ng-file-upload/dist/ng-file-upload-shim.js"></script>
 <script type="text/javascript" src="bower_components/ng-file-upload/dist/ng-file-upload.js"></script>
@@ -25,6 +29,7 @@
 <script type="text/javascript" src="js/services/destinosAPIService.js"></script>
 <script type="text/javascript" src="js/services/destinoDetailAPIService.js"></script>
 <script type="text/javascript" src="js/services/categoriasAPIService.js"></script>
+<script type="text/javascript" src="js/services/infiniteScrollAPIService.js"></script>
 
 <script type="text/javascript" src="js/directives/starRatingDirective.js"></script>
 <script type="text/javascript" src="js/controllers/homeCtrl.js"></script>
@@ -57,7 +62,7 @@
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
 	        <li class="active"><a href="#home"> Home <span class="sr-only">(current)</span></a></li>
-	        <li><a href="#novo">Adicionar destino</a></li>
+	        <li><a ui-sref="novo">Adicionar destino</a></li>
 	      </ul>
 
 	      <ul class="nav navbar-nav navbar-right">
@@ -80,13 +85,13 @@
 		<h3 class="page-header">Navegue</h3>
 		<ul class="nav nav-pills nav-stacked" style="padding-bottom:20px;">
 		  <li role="presentation" class="active"><a href="#">Home</a></li>
-		  <li role="presentation" class=""><a href="#">Categoria 1</a></li>
+		  <li role="presentation" class=""><a ui-sref="infiniteloop">Infinite Scroll</a></li>
 		  <li role="presentation" class=""><a href="#">Categoria 2</a></li>
 		  <li role="presentation" class=""><a href="#">Categoria 3</a></li>
 
 		</ul>		
 	</div>  			
-	<div ng-view class="col-md-8 pull-right" style="background:white;"> </div>
+	<div ui-view class="col-md-8 pull-right" style="background:white;"> </div>
 
   </div>
  
