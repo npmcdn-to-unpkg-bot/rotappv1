@@ -46,11 +46,12 @@ app.controller('homeCtrl', function($rootScope, $scope, $state){
 		FB.login(function(response){
 			if(response.authResponse){
 				console.log('Welcome! Fetching your info...');
-				FB.api('/me', {fields: 'last_name, picture, user_hometown, user_about_me'}, function(response){
+				FB.api('/me', {fields: 'id, name, picture'}, function(response){
 					console.log('Good to see you, ' + response.name + '.');
 					console.log(response);
 					// Aprender a usar CAllbacks..
-					$rootScope.user = response.last_name;
+					$rootScope.iduser = response.id;
+					$rootScope.user = response.name;
 					$rootScope.profilepic = response.picture.data.url;
 					console.log(response.picture.data.url);
 					//var accessToken = FB.getAuthResponse().accessToken;
