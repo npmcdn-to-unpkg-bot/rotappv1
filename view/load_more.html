@@ -1,0 +1,24 @@
+<h3 class="page-header">Destinos #</h3>
+<div class="row">
+  <div class="col-sm-6 col-md-4" ng-repeat="destino in destinos track by $index">
+    <div ng-init="rating = star.rating + 1"></div>
+    <div class="thumbnail">
+      <img ng-src="{{destino.imgurl}}">
+      <div class="caption">
+        <h3>{{destino.nome}}</h3>
+        
+        <div class="star-rating" 
+             star-rating rating-value="rating" 
+             data-max="5" 
+             on-rating-selected="rateFunction(rating)">
+        </div>        
+        <div style="clear:both;"></div>
+        <p>{{destino.descricao | limitTo: 100}} ...</p>
+        <p><a ng-href="#destino/{{destino.slug}}" class="btn btn-primary" role="button">Conhecer</a> <a href="#" class="btn btn-default" role="button">Salvar</a></p>
+      </div>
+    </div>    
+  </div>
+<button ng-disabled="n == 0" ng-click="loadMore()" class="btn btn-block btn-lg btn-warning">{{loadMoreBtnTxt}}</button>
+  
+
+</div>

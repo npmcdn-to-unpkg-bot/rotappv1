@@ -60,6 +60,12 @@ app.config(function($stateProvider, $urlRouterProvider){
 		controller: 'destinosCtrl'
 	})
 
+	.state('load', {
+		url:'/load-more',
+		templateUrl:'view/load_more.html',
+		controller: 'loadMoreCtrl'
+	})
+
 
 	
 
