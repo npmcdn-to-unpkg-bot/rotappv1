@@ -17,11 +17,13 @@ angular.module('RotApp').factory('Reddit', function($http) {
      
       $http.get('http://localhost/rotappv1/backend/getDestinos.php').success(function(data) {
         var items = data;
+
         console.log(items);
+
         for (var i = 0; i < items.length; i++) {
           this.items.push(items[i]);
           console.log(items);
-        }
+        };
         // this.after = "t3_" + this.items[this.items.length - 1].id;
          this.busy = false;
       }.bind(this)).error(function(data, status){

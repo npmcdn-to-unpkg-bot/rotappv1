@@ -4,11 +4,43 @@
 
   <!-- Aplicando infinite scroll -->
   
+<div class="col-md-12">
+  <div class="form-group">
+      <input ng-model="search" class="form-control" type="text" name="" placeholder="Busca..">
+  </div>
+
+  <p>
+    <label ng-model="categoria" id="catLabel" ng-click="selCat()" class="label label-success">{{categoria}}</label> em 
+    <label id="cidLabel" ng-click="selCid()" class="label label-primary">Cidades</label>
+  </p>
+  
+  <div id="catSelector" class="col-md-5" class="selector-box" style="display:none; position:absolute; z-index:400; background:white; padding:15px; border-radius:3%;">
+    <button ng-click="closeSelectors()" class="btn btn-close pull-right">x</button>
+    <div class="form-group">
+    <h4>Selecione a categoria </h4>
+      <select ng-model="categoria" ng-change="closeSelectors()" ng-options="categoria.nome as categoria.nome for categoria in categorias" class="form-control">
+        <option value="">Selecione a categoria</option>
+      </select>
+    </div>
+  </div>
+
+<div id="cidSelector" class="col-md-5" class="selector-box" style="display:none; position:absolute; z-index:400; background:white; padding:15px; border-radius:3%;">
+    <button ng-click="closeSelectors()" class="btn btn-close pull-right">x</button>
+    <div class="form-group">
+    <h4>Selecione a cidade </h4>
+      <select class="form-control">
+        <option value="">Selecione a cidade</option>
+      </select>
+    </div>
+  </div>
+
+</div>
+
   <div infinite-scroll='reddit.nextPage()' infinite-scroll-disabled='reddit.busy' infinite-scroll-distance='1'>
     <!-- Loop -->  
-    <div ng-repeat="destino in reddit.items" class="col-sm-6 col-md-4">
+    <div ng-repeat="destino in reddit.items | filter: {cat: categoria} | filter: search" class="col-sm-6 col-md-4" style="float:left; height:430px;">
       <div class="thumbnail">
-        <img ng-src="{{destino.imgurl}}">
+        <img style="height:200px;" ng-src="{{destino.imgurl}}">
         <div class="caption">
           <h3>{{destino.nome}}</h3>
           <div style="clear:both;"></div>

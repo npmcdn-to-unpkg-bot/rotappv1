@@ -34,6 +34,7 @@
 <script type="text/javascript" src="js/directives/starRatingDirective.js"></script>
 <script type="text/javascript" src="js/controllers/homeCtrl.js"></script>
 <script type="text/javascript" src="js/controllers/addDestinoCtrl.js"></script>
+<script type="text/javascript" src="js/controllers/destinosCtrl.js"></script>
 <script type="text/javascript" src="js/controllers/destinoCtrl.js"></script>
 <script type="text/javascript" src="js/controllers/uploadsCtrl.js"></script>
 <script type="text/javascript" src="js/controllers/starRatingCtrl.js"></script>
@@ -55,7 +56,7 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" href="#">{{appName}}</a>
+	      <a class="navbar-brand" href="#">{{appName}} # #</a>
 	    </div>
 
 	    <!-- Collect the nav links, forms, and other content for toggling -->
@@ -79,6 +80,9 @@
 			border-radius:10px 4px 4px 10px;
 		}
 
+		.label{cursor: pointer;}
+		.label:hover{background: #069;}
+
 	</style>
   <div class="container">
 	<div class="col-md-4 sidemenu" style="">
@@ -94,7 +98,22 @@
 	<div ui-view class="col-md-8 pull-right" style="background:white;"> </div>
 
   </div>
- 
+
+  <style type="text/css">
+  	#rootOverflow{
+  		width:100%;
+  		height: 900px;
+  		background:rgba(0, 0, 0, 0.8);
+  		position: absolute;
+  		z-index: 200;
+  		top:0;
+  		left: 0;
+  		display:none;
+  	}
+  </style>
+
+  <!-- General overflow -->
+  <div id="rootOverflow"></div>
  
  </body>
  
